@@ -1,0 +1,16 @@
+[
+{
+  "modid": "AquaTweaks",
+  "name": "AquaTweaks",
+  "description": "Making Minecraft prettier underwater!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["BluSunrize"],
+  "credits": "Ashlee Rees for helping with ASM, ApSciLiara for pointing me in the right direction, the IRC crew for suggestions and help",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
