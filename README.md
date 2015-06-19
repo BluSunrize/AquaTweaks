@@ -1,7 +1,7 @@
-![Logo](https://raw.githubusercontent.com/BluSunrize/ImmersiveEngineering/master/src/main/resources/assets/immersiveengineering/logo.png)
+![Logo](http://media-elerium.cursecdn.com/avatars/19/730/635700496171678672.png)
 ==============
 
-A retro-futuristic tech mod!
-Wires, transformers, capacitors!
+AquaTweaks is a small, clientside, coremod, which aims to improve the way fluids look around non-solid blocks.
+In its essence, it renders fake water into ladders, fences, signs and the likes, making them not look as derpy underwater.
 
-Please refrain from submitting Pull Requests in its current beta state. They will be closed and ignored.
+http://minecraft.curseforge.com/mc-mods/231659-aquatweaks
