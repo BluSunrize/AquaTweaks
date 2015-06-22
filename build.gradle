@@ -29,7 +29,7 @@ minecraft {
 jar {
         manifest{
         attributes 'FMLCorePlugin': 'blusunrize.aquatweaks.core.AquaTweaksCoreLoader',
-                   'FMLCorePluginContainsFMLMod': 'true'
+                   'FMLCorePluginContainsFMLMod': 'false'
     }
 }
 
