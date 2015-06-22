@@ -45,6 +45,19 @@ public class FluidUtils
 		addBlockToValidConnectables(Blocks.nether_brick_fence,OreDictionary.WILDCARD_VALUE);
 		addBlockToValidConnectables(Blocks.wall_sign,OreDictionary.WILDCARD_VALUE);
 		addBlockToValidConnectables(Blocks.standing_sign,OreDictionary.WILDCARD_VALUE);
+
+		//These would usually get flushed away, but Vazkii's Waterproof fixes that
+		addBlockToValidConnectables(Blocks.redstone_wire,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.redstone_torch,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.unlit_redstone_torch,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.unpowered_repeater,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.powered_repeater,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.unpowered_comparator,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.powered_comparator,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.rail,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.golden_rail,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.detector_rail,OreDictionary.WILDCARD_VALUE);
+		addBlockToValidConnectables(Blocks.activator_rail,OreDictionary.WILDCARD_VALUE);
 	}
 
 	public static Vec3 getFlowVector(IBlockAccess world, int x, int y, int z, Material mat)

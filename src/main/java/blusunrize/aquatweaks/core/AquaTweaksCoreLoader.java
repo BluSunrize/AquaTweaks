@@ -10,22 +10,27 @@ public class AquaTweaksCoreLoader implements IFMLLoadingPlugin
 {
 	public static final String NAME = "AquaTweaks Core";
 	@Override
-	public String[] getASMTransformerClass() {
+	public String[] getASMTransformerClass()
+	{
 		return new String[]{AquaTweaksCoreTransformer.class.getName()};
 	}
 	@Override
-	public String getModContainerClass() {
-		return AquaTweaksCore.class.getName();
-	}
-	@Override
-	public String getSetupClass() {
+	public String getModContainerClass()
+	{
 		return null;
 	}
 	@Override
-	public void injectData(Map<String, Object> data) {
+	public String getSetupClass()
+	{
+		return null;
 	}
 	@Override
-	public String getAccessTransformerClass() {
+	public void injectData(Map<String, Object> data)
+	{
+	}
+	@Override
+	public String getAccessTransformerClass()
+	{
 		return null;
 	}
 }

@@ -30,26 +30,49 @@ public class AquaTweaks
 	@SidedProxy(clientSide="blusunrize.aquatweaks.proxy.ClientProxy", serverSide="blusunrize.aquatweaks.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
-	
+
 	public static boolean tweakGlass = true;
-	
+	public static String[] manualTweaks = new String[]{"cobblestone_wall"};
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		Configuration config = new Configuration(event.getModConfigurationDirectory());
-		tweakGlass = config.get("tweaks", "tweakGlass", tweakGlass, "Set to false to re-enable water rendering its sides towards glass").getBoolean();
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		tweakGlass = config.getBoolean("tweaks", "tweakGlass", tweakGlass, "Set to false to re-enable water rendering its sides towards glass");
+		manualTweaks = config.getStringList("tweaks", "manualTweaks", manualTweaks, "This string array can be used to add blocks manually to AquaTweaks. Note that these need to be the proper registry names. The cobblestone wall added here can also be removed. They are optional but might be useful for people who use the walls as pillars or something.");
+		config.save();
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		proxy.registerHandlers();
 		FluidUtils.addDefaultConnectables();
+		for(String s : manualTweaks)
+		{
+			int meta = OreDictionary.WILDCARD_VALUE;
+			int li = s.lastIndexOf(":");
+			if(li!=-1)
+			{
+				try{
+					int m = Integer.parseInt(s.substring(li));
+					meta = m;
+					s = s.substring(0,li);
+				}catch(NumberFormatException e){}
+			}
+
+			Object b = (Block) Block.blockRegistry.getObject(s);
+			if(b!=null && b instanceof Block)
+				FluidUtils.addBlockToValidConnectables((Block)b, meta);
+			else
+				ATLog.info("Failed to register '"+s+"'; not a valid block identifier.");
+		}
 	}
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		ImmutableList<FMLInterModComms.IMCMessage> messages = FMLInterModComms.fetchRuntimeMessages(this);
-		for (FMLInterModComms.IMCMessage message : messages)
+		for(FMLInterModComms.IMCMessage message : messages)
 			if(message.key.equals("registerAquaConnectable"))
 			{
 				NBTTagCompound tag = message.getNBTValue();

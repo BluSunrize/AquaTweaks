@@ -16,6 +16,7 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
+import blusunrize.aquatweaks.ATLog;
 import blusunrize.aquatweaks.FluidUtils;
 import blusunrize.aquatweaks.RenderWorldEventMid;
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
@@ -28,6 +29,7 @@ public class AquaTweaksCoreTransformer implements IClassTransformer
 		//patch shouldSideBeRendered in BlockLiquid
 		if(className.equals("net.minecraft.block.BlockLiquid")||className.equals("alw"))
 		{
+			ATLog.info("Patching 'shouldSideBeRendered'");
 			ClassReader rd = new ClassReader(origCode);
 			ClassWriter wr = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 			ClassVisitor patcher = new Visitor_ShouldSide(wr);
@@ -38,6 +40,7 @@ public class AquaTweaksCoreTransformer implements IClassTransformer
 		//add custom render hook
 		if(className.equals("net.minecraft.client.renderer.WorldRenderer")||className.equals("blo"))
 		{
+			ATLog.info("Adding custom world render hook");
 			ClassReader rd = new ClassReader(origCode);
 			ClassWriter wr = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 			ClassVisitor patcher = new Visitor_RenderEvent(wr);
